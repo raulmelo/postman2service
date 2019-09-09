@@ -1,0 +1,2121 @@
+{
+	"info": {
+		"_postman_id": "bd7c125d-df43-4a93-a3dd-5c991d3809a2",
+		"name": "Brito Tosi",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "65e2e10a-6482-4dae-a242-1bd091dcf4a9",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "a618f823-6fe5-4220-8429-5b9a683de096",
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"console.log(jsonData)",
+									"pm.globals.set(\"token\", jsonData.access_token);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "admin@britotosi.com.br",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123456",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{api}}/api/auth/login",
+							"host": [
+								"{{api}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"login"
+							]
+						},
+						"description": "Login"
+					},
+					"response": []
+				},
+				{
+					"name": "Refresh",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "65e2e10a-6482-4dae-a242-1bd091dcf4a9",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "a618f823-6fe5-4220-8429-5b9a683de096",
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"console.log(jsonData)",
+									"pm.globals.set(\"token\", jsonData.access_token);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							},
+							{
+								"key": "X-Requested-With",
+								"value": "XMLHttpRequest",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "{{api}}/api/auth/refresh",
+							"host": [
+								"{{api}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"refresh"
+							]
+						},
+						"description": "Login"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "api",
+			"item": [
+				{
+					"name": "Familias",
+					"item": [
+						{
+							"name": "Lista",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "f081919d-c89b-462d-bd39-fc6e203c9f2c",
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									},
+									{
+										"key": "X-Requested-With",
+										"value": "XMLHttpRequest",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{api}}/api/families?page=1&page=1&per_page=50",
+									"host": [
+										"{{api}}"
+									],
+									"path": [
+										"api",
+										"families"
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "teste",
+											"disabled": true
+										},
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "per_page",
+											"value": "50"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									},
+									{
+										"key": "X-Requested-With",
+										"value": "XMLHttpRequest",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{api}}/api/families/6aaa9530-ff97-4204-a3b5-986ee500e2e1",
+									"host": [
+										"{{api}}"
+									],
+									"path": [
+										"api",
+										"families",
+										"6aaa9530-ff97-4204-a3b5-986ee500e2e1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get studies",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									},
+									{
+										"key": "X-Requested-With",
+										"value": "XMLHttpRequest",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{api}}/api/families/7df94047-231a-446c-baef-c69ff80a99e3/studies",
+									"host": [
+										"{{api}}"
+									],
+									"path": [
+										"api",
+										"families",
+										"7df94047-231a-446c-baef-c69ff80a99e3",
+										"studies"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Remover Copy",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "Bearer {{token}}"
+									},
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/x-www-form-urlencoded"
+									},
+									{
+										"key": "X-Requested-With",
+										"type": "text",
+										"value": "XMLHttpRequest"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": []
+								},
+								"url": {
+									"raw": "{{api}}/api/families/3985473b-ca63-41a5-83a3-5451e966be2b",
+									"host": [
+										"{{api}}"
+									],
+									"path": [
+										"api",
+										"families",
+										"3985473b-ca63-41a5-83a3-5451e966be2b"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "a6d3816f-1f99-4586-8fd2-6f9e82416a31",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "0e4329da-8d48-49e9-bf0a-f047c04b8436",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "People",
+					"item": [
+						{
+							"name": "show/{id}",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									},
+									{
+										"key": "X-Requested-With",
+										"value": "XMLHttpRequest",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{api}}/api/people/794c0abd-3f1e-4dcd-8cb3-ec50ae9c45e3",
+									"host": [
+										"{{api}}"
+									],
+									"path": [
+										"api",
+										"people",
+										"794c0abd-3f1e-4dcd-8cb3-ec50ae9c45e3"
+									]
+								},
+								"description": "Login"
+							},
+							"response": []
+						},
+						{
+							"name": "Criar pessoa sem família",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									},
+									{
+										"key": "X-Requested-With",
+										"value": "XMLHttpRequest",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "José Onofre ",
+											"type": "text"
+										},
+										{
+											"key": "birth",
+											"value": "1988/09/27",
+											"type": "text"
+										},
+										{
+											"key": "gender",
+											"value": "m",
+											"type": "text"
+										},
+										{
+											"key": "phone",
+											"value": "(61) 98161-1084",
+											"type": "text"
+										},
+										{
+											"key": "occupation",
+											"value": "Desenvolvedor",
+											"type": "text"
+										},
+										{
+											"key": "marital_status_id",
+											"value": "5",
+											"type": "text"
+										},
+										{
+											"key": "relationship_id",
+											"value": "19",
+											"type": "text"
+										},
+										{
+											"key": "family_id",
+											"value": "",
+											"type": "text",
+											"disabled": true
+										}
+									]
+								},
+								"url": {
+									"raw": "{{api}}/api/people/create",
+									"host": [
+										"{{api}}"
+									],
+									"path": [
+										"api",
+										"people",
+										"create"
+									]
+								},
+								"description": "Se family_id for null, ele criará uma nova família e atribuirá essa pessoa como master da família"
+							},
+							"response": []
+						},
+						{
+							"name": "Criar pessoa com família existente",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									},
+									{
+										"key": "X-Requested-With",
+										"value": "XMLHttpRequest",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "apagar",
+											"description": "(Obrigatório)",
+											"type": "text"
+										},
+										{
+											"key": "birth",
+											"value": "2017/12/07",
+											"description": "(Obrigatório)",
+											"type": "text"
+										},
+										{
+											"key": "gender",
+											"value": "f",
+											"description": "(Obrigatório)",
+											"type": "text"
+										},
+										{
+											"key": "phone",
+											"value": "(61) 98161-1084",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "occupation",
+											"value": "Desenvolvedor",
+											"type": "text"
+										},
+										{
+											"key": "marital_status_id",
+											"value": "5",
+											"type": "text"
+										},
+										{
+											"key": "relationship_id",
+											"value": "19",
+											"description": "(Obrigatório) | Não precisa enviar caso seja a primeira pessoa da família",
+											"type": "text"
+										},
+										{
+											"key": "family_id",
+											"value": "a1792e81-172f-4367-9a30-37eeef41da90",
+											"description": "Será criada uma nova família se não passar esse dado",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{api}}/api/people/create",
+									"host": [
+										"{{api}}"
+									],
+									"path": [
+										"api",
+										"people",
+										"create"
+									]
+								},
+								"description": "Se family_id for null, ele criará uma nova família e atribuirá essa pessoa como master da família"
+							},
+							"response": []
+						},
+						{
+							"name": "Editar",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									},
+									{
+										"key": "X-Requested-With",
+										"value": "XMLHttpRequest",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "clarice",
+											"type": "text"
+										},
+										{
+											"key": "birth",
+											"value": "1988/09/27",
+											"type": "text"
+										},
+										{
+											"key": "gender",
+											"value": "m",
+											"type": "text"
+										},
+										{
+											"key": "phone",
+											"value": "(61) 98161-1084",
+											"type": "text"
+										},
+										{
+											"key": "occupation",
+											"value": "Desenvolvedor",
+											"type": "text"
+										},
+										{
+											"key": "marital_status_id",
+											"value": "5",
+											"type": "text"
+										},
+										{
+											"key": "relationship_id",
+											"value": "19",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{api}}/api/people/06f8fd4c-9fbe-44c1-8722-23714b8ba1c0",
+									"host": [
+										"{{api}}"
+									],
+									"path": [
+										"api",
+										"people",
+										"06f8fd4c-9fbe-44c1-8722-23714b8ba1c0"
+									]
+								},
+								"description": "Se family_id for null, ele criará uma nova família e atribuirá essa pessoa como master da família"
+							},
+							"response": []
+						},
+						{
+							"name": "Remover",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "Bearer {{token}}"
+									},
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/x-www-form-urlencoded"
+									},
+									{
+										"key": "X-Requested-With",
+										"type": "text",
+										"value": "XMLHttpRequest"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": []
+								},
+								"url": {
+									"raw": "{{api}}/api/people/1b1e4f1d-417f-48a4-a04a-19f360172a01",
+									"host": [
+										"{{api}}"
+									],
+									"path": [
+										"api",
+										"people",
+										"1b1e4f1d-417f-48a4-a04a-19f360172a01"
+									]
+								},
+								"description": "Se family_id for null, ele criará uma nova família e atribuirá essa pessoa como master da família"
+							},
+							"response": []
+						},
+						{
+							"name": "Birth Month",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{api}}/api/peoples/birth-month",
+									"host": [
+										"{{api}}"
+									],
+									"path": [
+										"api",
+										"peoples",
+										"birth-month"
+									]
+								},
+								"description": "Aniversariantes do mes"
+							},
+							"response": []
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "a6d3816f-1f99-4586-8fd2-6f9e82416a31",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "0e4329da-8d48-49e9-bf0a-f047c04b8436",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Estudos",
+					"item": [
+						{
+							"name": "Itens",
+							"item": [
+								{
+									"name": "Criar",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer {{token}}",
+												"type": "text"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/x-www-form-urlencoded",
+												"type": "text"
+											},
+											{
+												"key": "X-Requested-With",
+												"value": "XMLHttpRequest",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "urlencoded",
+											"urlencoded": [
+												{
+													"key": "value",
+													"value": "10",
+													"description": "(Obrigatório)",
+													"type": "text"
+												},
+												{
+													"key": "date_start",
+													"value": "2019-02-20",
+													"type": "text"
+												},
+												{
+													"key": "date_end",
+													"value": "2019-05-20",
+													"type": "text"
+												},
+												{
+													"key": "study_id",
+													"value": "25cce5fb-83f8-4f88-aae2-4ece68b1845c",
+													"type": "text"
+												},
+												{
+													"key": "person_id",
+													"value": "84ce37fe-5bad-4d75-8719-d9be475c7154",
+													"type": "text"
+												},
+												{
+													"key": "subcategory_item_id",
+													"value": "2",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{api}}/api/study-items/create",
+											"host": [
+												"{{api}}"
+											],
+											"path": [
+												"api",
+												"study-items",
+												"create"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Editar",
+									"request": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer {{token}}",
+												"type": "text"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/x-www-form-urlencoded",
+												"type": "text"
+											},
+											{
+												"key": "X-Requested-With",
+												"value": "XMLHttpRequest",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "urlencoded",
+											"urlencoded": [
+												{
+													"key": "value",
+													"value": "13",
+													"description": "(Obrigatório)",
+													"type": "text"
+												},
+												{
+													"key": "date_start",
+													"value": "2019-02-21",
+													"type": "text"
+												},
+												{
+													"key": "date_end",
+													"value": "2019-05-22",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{api}}/api/study-items/1",
+											"host": [
+												"{{api}}"
+											],
+											"path": [
+												"api",
+												"study-items",
+												"1"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Remover",
+									"request": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Authorization",
+												"type": "text",
+												"value": "Bearer {{token}}"
+											},
+											{
+												"key": "Content-Type",
+												"type": "text",
+												"value": "application/x-www-form-urlencoded"
+											},
+											{
+												"key": "X-Requested-With",
+												"type": "text",
+												"value": "XMLHttpRequest"
+											}
+										],
+										"body": {
+											"mode": "urlencoded",
+											"urlencoded": []
+										},
+										"url": {
+											"raw": "{{api}}/api/study-items/1",
+											"host": [
+												"{{api}}"
+											],
+											"path": [
+												"api",
+												"study-items",
+												"1"
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"_postman_isSubFolder": true
+						},
+						{
+							"name": "Lista",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									},
+									{
+										"key": "X-Requested-With",
+										"value": "XMLHttpRequest",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{api}}/api/studies?",
+									"host": [
+										"{{api}}"
+									],
+									"path": [
+										"api",
+										"studies"
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "estudo",
+											"disabled": true
+										}
+									]
+								},
+								"description": "Login"
+							},
+							"response": []
+						},
+						{
+							"name": "Estudo",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									},
+									{
+										"key": "X-Requested-With",
+										"value": "XMLHttpRequest",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{api}}/api/studies/show/3c4fba62-edf5-4563-bf7f-91abe37cebef",
+									"host": [
+										"{{api}}"
+									],
+									"path": [
+										"api",
+										"studies",
+										"show",
+										"3c4fba62-edf5-4563-bf7f-91abe37cebef"
+									]
+								},
+								"description": "Login"
+							},
+							"response": [
+								{
+									"name": "Estudo - Success",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer {{token}}",
+												"type": "text"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/x-www-form-urlencoded",
+												"type": "text"
+											},
+											{
+												"key": "X-Requested-With",
+												"value": "XMLHttpRequest",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{api}}/api/studies/show/1d455e14-bd8d-4de5-b418-588ac502bb49",
+											"host": [
+												"{{api}}"
+											],
+											"path": [
+												"api",
+												"studies",
+												"show",
+												"1d455e14-bd8d-4de5-b418-588ac502bb49"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "860d6854.ngrok.io"
+										},
+										{
+											"key": "Date",
+											"value": "Wed, 24 Jul 2019 13:31:40 +0000"
+										},
+										{
+											"key": "Date",
+											"value": "Wed, 24 Jul 2019 13:31:40 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/7.1.23"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "60"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "57"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"id\": \"1d455e14-bd8d-4de5-b418-588ac502bb49\",\n    \"name\": \"Seguro de vida Raul Melo\",\n    \"created_at\": \"2019-07-24 13:17:07\",\n    \"updated_at\": \"2019-07-24 13:17:07\",\n    \"deleted_at\": null,\n    \"study_status_id\": 1,\n    \"family_id\": \"a1792e81-172f-4367-9a30-37eeef41da90\",\n    \"status\": {\n        \"id\": 1,\n        \"name\": \"Prospecção\"\n    },\n    \"family\": {\n        \"id\": \"a1792e81-172f-4367-9a30-37eeef41da90\",\n        \"created_at\": \"2019-07-23 21:47:19\",\n        \"updated_at\": \"2019-07-23 21:47:19\",\n        \"deleted_at\": null,\n        \"people\": [\n            {\n                \"id\": \"71718c08-fb0b-4aec-bd09-6f9cc5d2946c\",\n                \"name\": \"Naruto Uzumaki\",\n                \"birth\": \"1975-08-23\",\n                \"gender\": \"m\",\n                \"phone\": \"61 982695412\",\n                \"occupation\": \"Hokage\",\n                \"representative\": 1,\n                \"created_at\": \"2019-07-23 21:47:19\",\n                \"updated_at\": \"2019-07-23 21:47:19\",\n                \"family_id\": \"a1792e81-172f-4367-9a30-37eeef41da90\",\n                \"relationship_id\": 19,\n                \"marital_status_id\": 1,\n                \"relationship\": {\n                    \"id\": 19,\n                    \"name\": \"Principal\"\n                },\n                \"marital_status\": {\n                    \"id\": 1,\n                    \"name\": \"Casado\"\n                },\n                \"items\": []\n            }\n        ]\n    }\n}"
+								}
+							]
+						},
+						{
+							"name": "Relatorio",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "Bearer {{token}}"
+									},
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/x-www-form-urlencoded"
+									},
+									{
+										"key": "X-Requested-With",
+										"type": "text",
+										"value": "XMLHttpRequest"
+									}
+								],
+								"url": {
+									"raw": "{{api}}/api/studies/report/976adabf-f7f8-4764-8f6d-aaf36b418046",
+									"host": [
+										"{{api}}"
+									],
+									"path": [
+										"api",
+										"studies",
+										"report",
+										"976adabf-f7f8-4764-8f6d-aaf36b418046"
+									]
+								},
+								"description": "Login"
+							},
+							"response": [
+								{
+									"name": "Estudo - Success",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer {{token}}",
+												"type": "text"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/x-www-form-urlencoded",
+												"type": "text"
+											},
+											{
+												"key": "X-Requested-With",
+												"value": "XMLHttpRequest",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{api}}/api/studies/show/1d455e14-bd8d-4de5-b418-588ac502bb49",
+											"host": [
+												"{{api}}"
+											],
+											"path": [
+												"api",
+												"studies",
+												"show",
+												"1d455e14-bd8d-4de5-b418-588ac502bb49"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "860d6854.ngrok.io"
+										},
+										{
+											"key": "Date",
+											"value": "Wed, 24 Jul 2019 13:31:40 +0000"
+										},
+										{
+											"key": "Date",
+											"value": "Wed, 24 Jul 2019 13:31:40 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/7.1.23"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "60"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "57"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"id\": \"1d455e14-bd8d-4de5-b418-588ac502bb49\",\n    \"name\": \"Seguro de vida Raul Melo\",\n    \"created_at\": \"2019-07-24 13:17:07\",\n    \"updated_at\": \"2019-07-24 13:17:07\",\n    \"deleted_at\": null,\n    \"study_status_id\": 1,\n    \"family_id\": \"a1792e81-172f-4367-9a30-37eeef41da90\",\n    \"status\": {\n        \"id\": 1,\n        \"name\": \"Prospecção\"\n    },\n    \"family\": {\n        \"id\": \"a1792e81-172f-4367-9a30-37eeef41da90\",\n        \"created_at\": \"2019-07-23 21:47:19\",\n        \"updated_at\": \"2019-07-23 21:47:19\",\n        \"deleted_at\": null,\n        \"people\": [\n            {\n                \"id\": \"71718c08-fb0b-4aec-bd09-6f9cc5d2946c\",\n                \"name\": \"Naruto Uzumaki\",\n                \"birth\": \"1975-08-23\",\n                \"gender\": \"m\",\n                \"phone\": \"61 982695412\",\n                \"occupation\": \"Hokage\",\n                \"representative\": 1,\n                \"created_at\": \"2019-07-23 21:47:19\",\n                \"updated_at\": \"2019-07-23 21:47:19\",\n                \"family_id\": \"a1792e81-172f-4367-9a30-37eeef41da90\",\n                \"relationship_id\": 19,\n                \"marital_status_id\": 1,\n                \"relationship\": {\n                    \"id\": 19,\n                    \"name\": \"Principal\"\n                },\n                \"marital_status\": {\n                    \"id\": 1,\n                    \"name\": \"Casado\"\n                },\n                \"items\": []\n            }\n        ]\n    }\n}"
+								}
+							]
+						},
+						{
+							"name": "Criar",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									},
+									{
+										"key": "X-Requested-With",
+										"value": "XMLHttpRequest",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "estudo user josé",
+											"type": "text"
+										},
+										{
+											"key": "family_id",
+											"value": "d2fae3c6-d6b0-4edf-8647-03188bca3ce2",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{api}}/api/studies/create",
+									"host": [
+										"{{api}}"
+									],
+									"path": [
+										"api",
+										"studies",
+										"create"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "editar",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									},
+									{
+										"key": "X-Requested-With",
+										"value": "XMLHttpRequest",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "estudo 4",
+											"type": "text"
+										},
+										{
+											"key": "study_status_id",
+											"value": "2",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{api}}/api/studies/314d14eb-c767-4b3c-b1a9-b774def5a8f4",
+									"host": [
+										"{{api}}"
+									],
+									"path": [
+										"api",
+										"studies",
+										"314d14eb-c767-4b3c-b1a9-b774def5a8f4"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Remover",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									},
+									{
+										"key": "X-Requested-With",
+										"value": "XMLHttpRequest",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": []
+								},
+								"url": {
+									"raw": "{{api}}/api/studies/314d14eb-c767-4b3c-b1a9-b774def5a8f4",
+									"host": [
+										"{{api}}"
+									],
+									"path": [
+										"api",
+										"studies",
+										"314d14eb-c767-4b3c-b1a9-b774def5a8f4"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Ultimos",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									},
+									{
+										"key": "X-Requested-With",
+										"value": "XMLHttpRequest",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{api}}/api/studies/latest",
+									"host": [
+										"{{api}}"
+									],
+									"path": [
+										"api",
+										"studies",
+										"latest"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Overview studos",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									},
+									{
+										"key": "X-Requested-With",
+										"value": "XMLHttpRequest",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{api}}/api/studies/overview",
+									"host": [
+										"{{api}}"
+									],
+									"path": [
+										"api",
+										"studies",
+										"overview"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Categorias",
+					"item": [
+						{
+							"name": "Lista",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									},
+									{
+										"key": "X-Requested-With",
+										"value": "XMLHttpRequest",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{api}}/api/categories",
+									"host": [
+										"{{api}}"
+									],
+									"path": [
+										"api",
+										"categories"
+									]
+								},
+								"description": "Login"
+							},
+							"response": [
+								{
+									"name": "Lista  successo",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer {{token}}",
+												"type": "text"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/x-www-form-urlencoded",
+												"type": "text"
+											},
+											{
+												"key": "X-Requested-With",
+												"value": "XMLHttpRequest",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{api}}/api/categories",
+											"host": [
+												"{{api}}"
+											],
+											"path": [
+												"api",
+												"categories"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "860d6854.ngrok.io"
+										},
+										{
+											"key": "Date",
+											"value": "Wed, 24 Jul 2019 19:11:22 +0000"
+										},
+										{
+											"key": "Date",
+											"value": "Wed, 24 Jul 2019 19:11:22 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/7.1.23"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "60"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "59"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"data\": [\n        {\n            \"id\": 1,\n            \"name\": \"Educação\",\n            \"type\": \"expense\",\n            \"subcategory\": [\n                {\n                    \"id\": 1,\n                    \"name\": \"Todos\",\n                    \"subcategory_items\": [\n                        {\n                            \"id\": 1,\n                            \"name\": \"Berçário\",\n                            \"default_value\": 0,\n                            \"has_dates\": 0,\n                            \"default_months\": 0\n                        },\n                        {\n                            \"id\": 2,\n                            \"name\": \"Educação Infantil\",\n                            \"default_value\": 0,\n                            \"has_dates\": 0,\n                            \"default_months\": 0\n                        },\n                        {\n                            \"id\": 3,\n                            \"name\": \"Ensino Fundamental - 1º Seg. (1ª a 5ª)\",\n                            \"default_value\": 0,\n                            \"has_dates\": 0,\n                            \"default_months\": 0\n                        },\n                        {\n                            \"id\": 4,\n                            \"name\": \"Ensino Fundamental - 2º Seg. (6ª a 9ª)\",\n                            \"default_value\": 0,\n                            \"has_dates\": 0,\n                            \"default_months\": 0\n                        },\n                        {\n                            \"id\": 5,\n                            \"name\": \"Ensino Médio\",\n                            \"default_value\": 0,\n                            \"has_dates\": 0,\n                            \"default_months\": 0\n                        },\n                        {\n                            \"id\": 6,\n                            \"name\": \"Ensino Superior\",\n                            \"default_value\": 0,\n                            \"has_dates\": 0,\n                            \"default_months\": 0\n                        },\n                        {\n                            \"id\": 7,\n                            \"name\": \"Ensino Pós-graduação\",\n                            \"default_value\": 0,\n                            \"has_dates\": 0,\n                            \"default_months\": 0\n                        },\n                        {\n                            \"id\": 8,\n                            \"name\": \"Idiomas\",\n                            \"default_value\": 0,\n                            \"has_dates\": 0,\n                            \"default_months\": 0\n                        },\n                        {\n                            \"id\": 9,\n                            \"name\": \"Esportes\",\n                            \"default_value\": 0,\n                            \"has_dates\": 0,\n                            \"default_months\": 0\n                        },\n                        {\n                            \"id\": 10,\n                            \"name\": \"Outros Cursos\",\n                            \"default_value\": 0,\n                            \"has_dates\": 0,\n                            \"default_months\": 0\n                        }\n                    ]\n                }\n            ]\n        },\n        {\n            \"id\": 2,\n            \"name\": \"Despesas mensal permanente\",\n            \"type\": \"expense\",\n            \"subcategory\": [\n                {\n                    \"id\": 2,\n                    \"name\": \"Dia a dia básico\",\n                    \"subcategory_items\": [\n                        {\n                            \"id\": 11,\n                            \"name\": \"Despesa Completa\",\n                            \"default_value\": 0,\n                            \"has_dates\": 0,\n                            \"default_months\": 0\n                        },\n                        {\n                            \"id\": 12,\n                            \"name\": \"Supermercado\",\n                            \"default_value\": 0,\n                            \"has_dates\": 0,\n                            \"default_months\": 0\n                        },\n                        {\n                            \"id\": 13,\n                            \"name\": \"Feira/Açougue\",\n                            \"default_value\": 0,\n                            \"has_dates\": 0,\n                            \"default_months\": 0\n                        },\n                        {\n                            \"id\": 14,\n                            \"name\": \"Padaria\",\n                            \"default_value\": 0,\n                            \"has_dates\": 0,\n                            \"default_months\": 0\n                        },\n                        {\n                            \"id\": 15,\n                            \"name\": \"Empregada/Diarista\",\n                            \"default_value\": 0,\n                            \"has_dates\": 0,\n                            \"default_months\": 0\n                        },\n                        {\n                            \"id\": 16,\n                            \"name\": \"Condomínio/Gás\",\n                            \"default_value\": 0,\n                            \"has_dates\": 0,\n                            \"default_months\": 0\n                        },\n                        {\n                            \"id\": 17,\n                            \"name\": \"Água\",\n                            \"default_value\": 0,\n                            \"has_dates\": 0,\n                            \"default_months\": 0\n                        },\n                        {\n                            \"id\": 18,\n                            \"name\": \"Telefones\",\n                            \"default_value\": 0,\n                            \"has_dates\": 0,\n                            \"default_months\": 0\n                        },\n                        {\n                            \"id\": 19,\n                            \"name\": \"Energia Elétrica\",\n                            \"default_value\": 0,\n                            \"has_dates\": 0,\n                            \"default_months\": 0\n                        },\n                        {\n                            \"id\": 20,\n                            \"name\": \"TV a Cabo\",\n                            \"default_value\": 0,\n                            \"has_dates\": 0,\n                            \"default_months\": 0\n                        },\n                        {\n                            \"id\": 21,\n                            \"name\": \"Internet\",\n                            \"default_value\": 0,\n                            \"has_dates\": 0,\n                            \"default_months\": 0\n                        },\n                        {\n                            \"id\": 22,\n                            \"name\": \"Combustível\",\n                            \"default_value\": 0,\n                            \"has_dates\": 0,\n                            \"default_months\": 0\n                        },\n                        {\n                            \"id\": 23,\n                            \"name\": \"Manutenção Casa\",\n                            \"default_value\": 0,\n                            \"has_dates\": 0,\n                            \"default_months\": 0\n                        },\n                        {\n                            \"id\": 24,\n                            \"name\": \"Manutenção Carro\",\n                            \"default_value\": 0,\n                            \"has_dates\": 0,\n                            \"default_months\": 0\n                        },\n                        {\n                            \"id\": 25,\n                            \"name\": \"Sapateiro/Costureira\",\n                            \"default_value\": 0,\n                            \"has_dates\": 0,\n                            \"default_months\": 0\n                        },\n                        {\n                            \"id\": 26,\n                            \"name\": \"Salão Beleza/Barbeiro\",\n                            \"default_value\": 0,\n                            \"has_dates\": 0,\n                            \"default_months\": 0\n                        },\n                        {\n                            \"id\": 27,\n                            \"name\": \"Vestuário\",\n                            \"default_value\": 0,\n                            \"has_dates\": 0,\n                            \"default_months\": 0\n                        },\n                        {\n                            \"id\": 28,\n                            \"name\": \"Estacionamento\",\n                            \"default_value\": 0,\n                            \"has_dates\": 0,\n                            \"default_months\": 0\n                        },\n                        {\n                            \"id\": 29,\n                            \"name\": \"Plano de Saúde\",\n                            \"default_value\": 0,\n                            \"has_dates\": 0,\n                            \"default_months\": 0\n                        },\n                        {\n                            \"id\": 30,\n                            \"name\": \"Dentista/Médico\",\n                            \"default_value\": 0,\n                            \"has_dates\": 0,\n                            \"default_months\": 0\n                        },\n                        {\n                            \"id\": 31,\n                            \"name\": \"Farmácia\",\n                            \"default_value\": 0,\n                            \"has_dates\": 0,\n                            \"default_months\": 0\n                        },\n                        {\n                            \"id\": 32,\n                            \"name\": \"Prêmio Seguro do Carro\",\n                            \"default_value\": 0,\n                            \"has_dates\": 0,\n                            \"default_months\": 0\n                        },\n                        {\n                            \"id\": 33,\n                            \"name\": \"Prêmio Seguro da Casa\",\n                            \"default_value\": 0,\n                            \"has_dates\": 0,\n                            \"default_months\": 0\n                        },\n                        {\n                            \"id\": 34,\n                            \"name\": \"IPVA\",\n                            \"default_value\": 0,\n                            \"has_dates\": 0,\n                            \"default_months\": 0\n                        },\n                        {\n                            \"id\": 35,\n                            \"name\": \"IPTU\",\n                            \"default_value\": 0,\n                            \"has_dates\": 0,\n                            \"default_months\": 0\n                        },\n                        {\n                            \"id\": 36,\n                            \"name\": \"Outras Despesas\",\n                            \"default_value\": 0,\n                            \"has_dates\": 0,\n                            \"default_months\": 0\n                        }\n                    ]\n                },\n                {\n                    \"id\": 3,\n                    \"name\": \"Dia a dia extra\",\n                    \"subcategory_items\": [\n                        {\n                            \"id\": 37,\n                            \"name\": \"Despesa Completa\",\n                            \"default_value\": 0,\n                            \"has_dates\": 0,\n                            \"default_months\": 0\n                        },\n                        {\n                            \"id\": 38,\n                            \"name\": \"Jardineiro\",\n                            \"default_value\": 0,\n                            \"has_dates\": 0,\n                            \"default_months\": 0\n                        },\n                        {\n                            \"id\": 39,\n                            \"name\": \"Lavanderia\",\n                            \"default_value\": 0,\n                            \"has_dates\": 0,\n                            \"default_months\": 0\n                        },\n                        {\n                            \"id\": 40,\n                            \"name\": \"Gastos com Animais\",\n                            \"default_value\": 0,\n                            \"has_dates\": 0,\n                            \"default_months\": 0\n                        },\n                        {\n                            \"id\": 41,\n                            \"name\": \"Presentes\",\n                            \"default_value\": 0,\n                            \"has_dates\": 0,\n                            \"default_months\": 0\n                        },\n                        {\n                            \"id\": 42,\n                            \"name\": \"Esportes/Hobbies\",\n                            \"default_value\": 0,\n                            \"has_dates\": 0,\n                            \"default_months\": 0\n                        },\n                        {\n                            \"id\": 43,\n                            \"name\": \"Clube/Academia\",\n                            \"default_value\": 0,\n                            \"has_dates\": 0,\n                            \"default_months\": 0\n                        },\n                        {\n                            \"id\": 44,\n                            \"name\": \"Viagens\",\n                            \"default_value\": 0,\n                            \"has_dates\": 0,\n                            \"default_months\": 0\n                        },\n                        {\n                            \"id\": 45,\n                            \"name\": \"Lazer\",\n                            \"default_value\": 0,\n                            \"has_dates\": 0,\n                            \"default_months\": 0\n                        },\n                        {\n                            \"id\": 46,\n                            \"name\": \"Restaurante\",\n                            \"default_value\": 0,\n                            \"has_dates\": 0,\n                            \"default_months\": 0\n                        },\n                        {\n                            \"id\": 47,\n                            \"name\": \"Revistas/Jornais/Livros\",\n                            \"default_value\": 0,\n                            \"has_dates\": 0,\n                            \"default_months\": 0\n                        },\n                        {\n                            \"id\": 48,\n                            \"name\": \"Juros/Tarifas Bancárias\",\n                            \"default_value\": 0,\n                            \"has_dates\": 0,\n                            \"default_months\": 0\n                        },\n                        {\n                            \"id\": 49,\n                            \"name\": \"Outras Despesas\",\n                            \"default_value\": 0,\n                            \"has_dates\": 0,\n                            \"default_months\": 0\n                        }\n                    ]\n                }\n            ]\n        },\n        {\n            \"id\": 3,\n            \"name\": \"Despesa mensal temporária\",\n            \"type\": \"expense\",\n            \"subcategory\": [\n                {\n                    \"id\": 4,\n                    \"name\": \"Autônomo\",\n                    \"subcategory_items\": [\n                        {\n                            \"id\": 50,\n                            \"name\": \"ISS\",\n                            \"default_value\": 0,\n                            \"has_dates\": 0,\n                            \"default_months\": 0\n                        },\n                        {\n                            \"id\": 51,\n                            \"name\": \"COFINS\",\n                            \"default_value\": 0,\n                            \"has_dates\": 0,\n                            \"default_months\": 0\n                        },\n                        {\n                            \"id\": 52,\n                            \"name\": \"IR\",\n                            \"default_value\": 0,\n                            \"has_dates\": 0,\n                            \"default_months\": 0\n                        },\n                        {\n                            \"id\": 53,\n                            \"name\": \"Contador\",\n                            \"default_value\": 0,\n                            \"has_dates\": 0,\n                            \"default_months\": 0\n                        },\n                        {\n                            \"id\": 54,\n                            \"name\": \"Outras Despesas\",\n                            \"default_value\": 0,\n                            \"has_dates\": 0,\n                            \"default_months\": 0\n                        }\n                    ]\n                },\n                {\n                    \"id\": 5,\n                    \"name\": \"Pensões\",\n                    \"subcategory_items\": [\n                        {\n                            \"id\": 55,\n                            \"name\": \"Pensão Alimentícia\",\n                            \"default_value\": 0,\n                            \"has_dates\": 0,\n                            \"default_months\": 0\n                        },\n                        {\n                            \"id\": 56,\n                            \"name\": \"Outras Pensões\",\n                            \"default_value\": 0,\n                            \"has_dates\": 0,\n                            \"default_months\": 0\n                        }\n                    ]\n                },\n                {\n                    \"id\": 6,\n                    \"name\": \"Temporárias\",\n                    \"subcategory_items\": [\n                        {\n                            \"id\": 57,\n                            \"name\": \"Ortodontista\",\n                            \"default_value\": 0,\n                            \"has_dates\": 0,\n                            \"default_months\": 0\n                        },\n                        {\n                            \"id\": 58,\n                            \"name\": \"Psicólogo\",\n                            \"default_value\": 0,\n                            \"has_dates\": 0,\n                            \"default_months\": 0\n                        },\n                        {\n                            \"id\": 59,\n                            \"name\": \"Psiquiatra\",\n                            \"default_value\": 0,\n                            \"has_dates\": 0,\n                            \"default_months\": 0\n                        },\n                        {\n                            \"id\": 60,\n                            \"name\": \"Prev. Social\",\n                            \"default_value\": 0,\n                            \"has_dates\": 0,\n                            \"default_months\": 0\n                        },\n                        {\n                            \"id\": 61,\n                            \"name\": \"Prev. Privada\",\n                            \"default_value\": 0,\n                            \"has_dates\": 0,\n                            \"default_months\": 0\n                        },\n                        {\n                            \"id\": 62,\n                            \"name\": \"Prêmio Seguro de Vida\",\n                            \"default_value\": 0,\n                            \"has_dates\": 0,\n                            \"default_months\": 0\n                        },\n                        {\n                            \"id\": 63,\n                            \"name\": \"Outras Despesas\",\n                            \"default_value\": 0,\n                            \"has_dates\": 0,\n                            \"default_months\": 0\n                        }\n                    ]\n                },\n                {\n                    \"id\": 7,\n                    \"name\": \"Gastos com moradia\",\n                    \"subcategory_items\": [\n                        {\n                            \"id\": 64,\n                            \"name\": \"Aluguel\",\n                            \"default_value\": 0,\n                            \"has_dates\": 0,\n                            \"default_months\": 0\n                        },\n                        {\n                            \"id\": 65,\n                            \"name\": \"Valor de Compra da Moradia\",\n                            \"default_value\": 0,\n                            \"has_dates\": 0,\n                            \"default_months\": 0\n                        },\n                        {\n                            \"id\": 66,\n                            \"name\": \"Financiamento da Moradia\",\n                            \"default_value\": 0,\n                            \"has_dates\": 0,\n                            \"default_months\": 0\n                        },\n                        {\n                            \"id\": 67,\n                            \"name\": \"(-) Seguro Financiamento da Moradia\",\n                            \"default_value\": 0,\n                            \"has_dates\": 0,\n                            \"default_months\": 0\n                        }\n                    ]\n                },\n                {\n                    \"id\": 8,\n                    \"name\": \"Despesa completa\",\n                    \"subcategory_items\": []\n                }\n            ]\n        },\n        {\n            \"id\": 4,\n            \"name\": \"Outros financiamentos\",\n            \"type\": \"expense\",\n            \"subcategory\": [\n                {\n                    \"id\": 9,\n                    \"name\": \"Todos\",\n                    \"subcategory_items\": [\n                        {\n                            \"id\": 68,\n                            \"name\": \"Eletrodoméstico\",\n                            \"default_value\": 0,\n                            \"has_dates\": 0,\n                            \"default_months\": 0\n                        },\n                        {\n                            \"id\": 69,\n                            \"name\": \"Empréstimo\",\n                            \"default_value\": 0,\n                            \"has_dates\": 0,\n                            \"default_months\": 0\n                        },\n                        {\n                            \"id\": 70,\n                            \"name\": \"Financiamento de Carro\",\n                            \"default_value\": 0,\n                            \"has_dates\": 0,\n                            \"default_months\": 0\n                        },\n                        {\n                            \"id\": 71,\n                            \"name\": \"Consórcio de Carro\",\n                            \"default_value\": 0,\n                            \"has_dates\": 0,\n                            \"default_months\": 0\n                        },\n                        {\n                            \"id\": 72,\n                            \"name\": \"Financiamento de Imóvel\",\n                            \"default_value\": 0,\n                            \"has_dates\": 0,\n                            \"default_months\": 0\n                        },\n                        {\n                            \"id\": 73,\n                            \"name\": \"Consórcio de Imóvel\",\n                            \"default_value\": 0,\n                            \"has_dates\": 0,\n                            \"default_months\": 0\n                        },\n                        {\n                            \"id\": 74,\n                            \"name\": \"Outros Projetos\",\n                            \"default_value\": 0,\n                            \"has_dates\": 0,\n                            \"default_months\": 0\n                        },\n                        {\n                            \"id\": 75,\n                            \"name\": \"(-) Seguro Outros Financiamentos\",\n                            \"default_value\": 0,\n                            \"has_dates\": 0,\n                            \"default_months\": 0\n                        }\n                    ]\n                }\n            ]\n        },\n        {\n            \"id\": 5,\n            \"name\": \"Dívidas\",\n            \"type\": \"expense\",\n            \"subcategory\": [\n                {\n                    \"id\": 10,\n                    \"name\": \"Todos\",\n                    \"subcategory_items\": [\n                        {\n                            \"id\": 76,\n                            \"name\": \"Cartão de Crédito\",\n                            \"default_value\": 0,\n                            \"has_dates\": 0,\n                            \"default_months\": 0\n                        },\n                        {\n                            \"id\": 77,\n                            \"name\": \"Empréstimo\",\n                            \"default_value\": 0,\n                            \"has_dates\": 0,\n                            \"default_months\": 0\n                        },\n                        {\n                            \"id\": 78,\n                            \"name\": \"Outras Dívidas\",\n                            \"default_value\": 0,\n                            \"has_dates\": 0,\n                            \"default_months\": 0\n                        }\n                    ]\n                }\n            ]\n        },\n        {\n            \"id\": 6,\n            \"name\": \"Despesas vitalícias\",\n            \"type\": \"expense\",\n            \"subcategory\": [\n                {\n                    \"id\": 11,\n                    \"name\": \"Todos\",\n                    \"subcategory_items\": [\n                        {\n                            \"id\": 79,\n                            \"name\": \"Emergencial\",\n                            \"default_value\": 0,\n                            \"has_dates\": 0,\n                            \"default_months\": 0\n                        },\n                        {\n                            \"id\": 80,\n                            \"name\": \"Restabelecimento de Vida\",\n                            \"default_value\": 0,\n                            \"has_dates\": 0,\n                            \"default_months\": 0\n                        },\n                        {\n                            \"id\": 81,\n                            \"name\": \"Reorganização Póstuma\",\n                            \"default_value\": 0,\n                            \"has_dates\": 0,\n                            \"default_months\": 0\n                        },\n                        {\n                            \"id\": 82,\n                            \"name\": \"Inventário\",\n                            \"default_value\": 0,\n                            \"has_dates\": 0,\n                            \"default_months\": 0\n                        }\n                    ]\n                }\n            ]\n        },\n        {\n            \"id\": 7,\n            \"name\": \"Receitas para 3ª idade\",\n            \"type\": \"income\",\n            \"subcategory\": [\n                {\n                    \"id\": 12,\n                    \"name\": \"Todos\",\n                    \"subcategory_items\": [\n                        {\n                            \"id\": 83,\n                            \"name\": \"FGTS\",\n                            \"default_value\": 0,\n                            \"has_dates\": 0,\n                            \"default_months\": 0\n                        },\n                        {\n                            \"id\": 84,\n                            \"name\": \"Outros institutos públicos\",\n                            \"default_value\": 0,\n                            \"has_dates\": 0,\n                            \"default_months\": 0\n                        },\n                        {\n                            \"id\": 85,\n                            \"name\": \"Previdência privada\",\n                            \"default_value\": 0,\n                            \"has_dates\": 0,\n                            \"default_months\": 0\n                        },\n                        {\n                            \"id\": 86,\n                            \"name\": \"Renda pretendida para 3ª idade\",\n                            \"default_value\": 0,\n                            \"has_dates\": 0,\n                            \"default_months\": 0\n                        },\n                        {\n                            \"id\": 87,\n                            \"name\": \"Vr INSS - Já aposentou\",\n                            \"default_value\": 0,\n                            \"has_dates\": 0,\n                            \"default_months\": 0\n                        },\n                        {\n                            \"id\": 88,\n                            \"name\": \"Vr INSS estimado - Vai aposentar\",\n                            \"default_value\": 0,\n                            \"has_dates\": 0,\n                            \"default_months\": 0\n                        }\n                    ]\n                }\n            ]\n        },\n        {\n            \"id\": 8,\n            \"name\": \"Receitas existentes\",\n            \"type\": \"income\",\n            \"subcategory\": [\n                {\n                    \"id\": 13,\n                    \"name\": \"Outras rendas\",\n                    \"subcategory_items\": [\n                        {\n                            \"id\": 89,\n                            \"name\": \"Renda Aluguel\",\n                            \"default_value\": 0,\n                            \"has_dates\": 0,\n                            \"default_months\": 0\n                        },\n                        {\n                            \"id\": 90,\n                            \"name\": \"Renda Pensão INSS\",\n                            \"default_value\": 0,\n                            \"has_dates\": 0,\n                            \"default_months\": 0\n                        },\n                        {\n                            \"id\": 91,\n                            \"name\": \"Renda Financeira\",\n                            \"default_value\": 0,\n                            \"has_dates\": 0,\n                            \"default_months\": 0\n                        },\n                        {\n                            \"id\": 92,\n                            \"name\": \"Renda de Filhos\",\n                            \"default_value\": 0,\n                            \"has_dates\": 0,\n                            \"default_months\": 0\n                        },\n                        {\n                            \"id\": 93,\n                            \"name\": \"Renda Pensão Alimentícia\",\n                            \"default_value\": 0,\n                            \"has_dates\": 0,\n                            \"default_months\": 0\n                        },\n                        {\n                            \"id\": 94,\n                            \"name\": \"Outras Rendas\",\n                            \"default_value\": 0,\n                            \"has_dates\": 0,\n                            \"default_months\": 0\n                        }\n                    ]\n                },\n                {\n                    \"id\": 14,\n                    \"name\": \"Patrimônio\",\n                    \"subcategory_items\": [\n                        {\n                            \"id\": 95,\n                            \"name\": \"Patrimônio Completo\",\n                            \"default_value\": 0,\n                            \"has_dates\": 0,\n                            \"default_months\": 0\n                        },\n                        {\n                            \"id\": 96,\n                            \"name\": \"Imóvel\",\n                            \"default_value\": 0,\n                            \"has_dates\": 0,\n                            \"default_months\": 0\n                        },\n                        {\n                            \"id\": 97,\n                            \"name\": \"Carro\",\n                            \"default_value\": 0,\n                            \"has_dates\": 0,\n                            \"default_months\": 0\n                        },\n                        {\n                            \"id\": 98,\n                            \"name\": \"Direitos Autorais\",\n                            \"default_value\": 0,\n                            \"has_dates\": 0,\n                            \"default_months\": 0\n                        },\n                        {\n                            \"id\": 99,\n                            \"name\": \"Outras Fontes de Patrimônio\",\n                            \"default_value\": 0,\n                            \"has_dates\": 0,\n                            \"default_months\": 0\n                        }\n                    ]\n                },\n                {\n                    \"id\": 15,\n                    \"name\": \"Recursos financeiros\",\n                    \"subcategory_items\": [\n                        {\n                            \"id\": 100,\n                            \"name\": \"Aplicação Renda Fixa\",\n                            \"default_value\": 0,\n                            \"has_dates\": 0,\n                            \"default_months\": 0\n                        },\n                        {\n                            \"id\": 101,\n                            \"name\": \"Aplicação Renda Variável\",\n                            \"default_value\": 0,\n                            \"has_dates\": 0,\n                            \"default_months\": 0\n                        },\n                        {\n                            \"id\": 102,\n                            \"name\": \"Espécie\",\n                            \"default_value\": 0,\n                            \"has_dates\": 0,\n                            \"default_months\": 0\n                        },\n                        {\n                            \"id\": 103,\n                            \"name\": \"Poupança\",\n                            \"default_value\": 0,\n                            \"has_dates\": 0,\n                            \"default_months\": 0\n                        },\n                        {\n                            \"id\": 104,\n                            \"name\": \"Outros Recursos Financeiros\",\n                            \"default_value\": 0,\n                            \"has_dates\": 0,\n                            \"default_months\": 0\n                        }\n                    ]\n                },\n                {\n                    \"id\": 16,\n                    \"name\": \"Remuneração mensal\",\n                    \"subcategory_items\": [\n                        {\n                            \"id\": 105,\n                            \"name\": \"Celetista\",\n                            \"default_value\": 0,\n                            \"has_dates\": 0,\n                            \"default_months\": 0\n                        },\n                        {\n                            \"id\": 106,\n                            \"name\": \"Servidor público (INSS)\",\n                            \"default_value\": 0,\n                            \"has_dates\": 0,\n                            \"default_months\": 0\n                        },\n                        {\n                            \"id\": 107,\n                            \"name\": \"Servidor público (INTEGRAL)\",\n                            \"default_value\": 0,\n                            \"has_dates\": 0,\n                            \"default_months\": 0\n                        },\n                        {\n                            \"id\": 108,\n                            \"name\": \"Empresário\",\n                            \"default_value\": 0,\n                            \"has_dates\": 0,\n                            \"default_months\": 0\n                        },\n                        {\n                            \"id\": 109,\n                            \"name\": \"Autônomo\",\n                            \"default_value\": 0,\n                            \"has_dates\": 0,\n                            \"default_months\": 0\n                        }\n                    ]\n                }\n            ]\n        },\n        {\n            \"id\": 9,\n            \"name\": \"Seguro de vida\",\n            \"type\": \"income\",\n            \"subcategory\": [\n                {\n                    \"id\": 17,\n                    \"name\": \"Todos\",\n                    \"subcategory_items\": [\n                        {\n                            \"id\": 110,\n                            \"name\": \"Outras Seg.- Temporário\",\n                            \"default_value\": 0,\n                            \"has_dates\": 0,\n                            \"default_months\": 0\n                        },\n                        {\n                            \"id\": 111,\n                            \"name\": \"Outras Seg.- Temporário Decrescente\",\n                            \"default_value\": 0,\n                            \"has_dates\": 0,\n                            \"default_months\": 0\n                        },\n                        {\n                            \"id\": 112,\n                            \"name\": \"Outras Seg.- Renda Familiar\",\n                            \"default_value\": 0,\n                            \"has_dates\": 0,\n                            \"default_months\": 0\n                        },\n                        {\n                            \"id\": 113,\n                            \"name\": \"Outras Seg.- Vitalício\",\n                            \"default_value\": 0,\n                            \"has_dates\": 0,\n                            \"default_months\": 0\n                        },\n                        {\n                            \"id\": 114,\n                            \"name\": \"Outras Seg.- Morte Acidental\",\n                            \"default_value\": 0,\n                            \"has_dates\": 0,\n                            \"default_months\": 0\n                        },\n                        {\n                            \"id\": 115,\n                            \"name\": \"Outras\",\n                            \"default_value\": 0,\n                            \"has_dates\": 0,\n                            \"default_months\": 0\n                        }\n                    ]\n                }\n            ]\n        }\n    ]\n}"
+								}
+							]
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Parentesco",
+					"item": [
+						{
+							"name": "Lista",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									},
+									{
+										"key": "X-Requested-With",
+										"value": "XMLHttpRequest",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{api}}/api/relationships",
+									"host": [
+										"{{api}}"
+									],
+									"path": [
+										"api",
+										"relationships"
+									]
+								},
+								"description": "Login"
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Estado Civil",
+					"item": [
+						{
+							"name": "Lista",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									},
+									{
+										"key": "X-Requested-With",
+										"value": "XMLHttpRequest",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{api}}/api/marital-status",
+									"host": [
+										"{{api}}"
+									],
+									"path": [
+										"api",
+										"marital-status"
+									]
+								},
+								"description": "Login"
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Produtos",
+					"item": [
+						{
+							"name": "Buscar",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "Bearer {{token}}"
+									},
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/x-www-form-urlencoded"
+									},
+									{
+										"key": "X-Requested-With",
+										"type": "text",
+										"value": "XMLHttpRequest"
+									}
+								],
+								"url": {
+									"raw": "{{api}}/api/products?search=10",
+									"host": [
+										"{{api}}"
+									],
+									"path": [
+										"api",
+										"products"
+									],
+									"query": [
+										{
+											"key": "search",
+											"value": "10"
+										}
+									]
+								},
+								"description": "Login"
+							},
+							"response": []
+						},
+						{
+							"name": "Criar",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "Bearer {{token}}"
+									},
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/x-www-form-urlencoded"
+									},
+									{
+										"key": "X-Requested-With",
+										"type": "text",
+										"value": "XMLHttpRequest"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "capital_assured",
+											"value": "1000.30",
+											"type": "text"
+										},
+										{
+											"key": "value",
+											"value": "20",
+											"type": "text"
+										},
+										{
+											"key": "product_id",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "study_id",
+											"value": "1d455e14-bd8d-4de5-b418-588ac502bb49",
+											"type": "text"
+										},
+										{
+											"key": "family_id",
+											"value": "",
+											"type": "text",
+											"disabled": true
+										}
+									]
+								},
+								"url": {
+									"raw": "{{api}}/api/products/create",
+									"host": [
+										"{{api}}"
+									],
+									"path": [
+										"api",
+										"products",
+										"create"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Editar",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "Bearer {{token}}"
+									},
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/x-www-form-urlencoded"
+									},
+									{
+										"key": "X-Requested-With",
+										"type": "text",
+										"value": "XMLHttpRequest"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "capital_assured",
+											"value": "11,00",
+											"type": "text"
+										},
+										{
+											"key": "value",
+											"value": "20.00",
+											"type": "text"
+										},
+										{
+											"key": "family_id",
+											"value": "",
+											"type": "text",
+											"disabled": true
+										}
+									]
+								},
+								"url": {
+									"raw": "{{api}}/api/products/2",
+									"host": [
+										"{{api}}"
+									],
+									"path": [
+										"api",
+										"products",
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Remover",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "Bearer {{token}}"
+									},
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/x-www-form-urlencoded"
+									},
+									{
+										"key": "X-Requested-With",
+										"type": "text",
+										"value": "XMLHttpRequest"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": []
+								},
+								"url": {
+									"raw": "{{api}}/api/products/2",
+									"host": [
+										"{{api}}"
+									],
+									"path": [
+										"api",
+										"products",
+										"2"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "448d5aeb-3450-48bb-8111-a43689ec5080",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "1db1598c-9975-498e-8139-1beabc510cb1",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "User",
+					"item": [
+						{
+							"name": "Password inicial",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									},
+									{
+										"key": "X-Requested-With",
+										"value": "XMLHttpRequest",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "password",
+											"value": "1234",
+											"type": "text"
+										},
+										{
+											"key": "password_confirmation",
+											"value": "1234",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{api}}/api/user/password/52166dfc-1e01-47cb-a186-56a0247a8dd3",
+									"host": [
+										"{{api}}"
+									],
+									"path": [
+										"api",
+										"user",
+										"password",
+										"52166dfc-1e01-47cb-a186-56a0247a8dd3"
+									]
+								},
+								"description": "Rota para adição de password inicial com link encaminhado no e-mail de cadastro"
+							},
+							"response": []
+						},
+						{
+							"name": "Me",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									},
+									{
+										"key": "X-Requested-With",
+										"value": "XMLHttpRequest",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": []
+								},
+								"url": {
+									"raw": "{{api}}/api/user/me",
+									"host": [
+										"{{api}}"
+									],
+									"path": [
+										"api",
+										"user",
+										"me"
+									]
+								},
+								"description": "Rota para adição de password inicial com link encaminhado no e-mail de cadastro"
+							},
+							"response": []
+						},
+						{
+							"name": "Alterar password",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									},
+									{
+										"key": "X-Requested-With",
+										"value": "XMLHttpRequest",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "password",
+											"value": "123456",
+											"type": "text"
+										},
+										{
+											"key": "new_password",
+											"value": "123456",
+											"type": "text"
+										},
+										{
+											"key": "new_password_confirmation",
+											"value": "123456",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{api}}/api/user/password/update",
+									"host": [
+										"{{api}}"
+									],
+									"path": [
+										"api",
+										"user",
+										"password",
+										"update"
+									]
+								},
+								"description": "Rota para adição de password inicial com link encaminhado no e-mail de cadastro"
+							},
+							"response": []
+						},
+						{
+							"name": "Alterar dados",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "Bearer {{token}}"
+									},
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/x-www-form-urlencoded"
+									},
+									{
+										"key": "X-Requested-With",
+										"type": "text",
+										"value": "XMLHttpRequest"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "Admin",
+											"type": "text"
+										},
+										{
+											"key": "company_name",
+											"value": "Ammora",
+											"type": "text"
+										},
+										{
+											"key": "theme",
+											"value": "1",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{api}}/api/user/change-data",
+									"host": [
+										"{{api}}"
+									],
+									"path": [
+										"api",
+										"user",
+										"change-data"
+									]
+								},
+								"description": "Rota para adição de password inicial com link encaminhado no e-mail de cadastro"
+							},
+							"response": []
+						},
+						{
+							"name": "Alterar foto",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									},
+									{
+										"key": "X-Requested-With",
+										"value": "XMLHttpRequest",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "file",
+											"type": "file",
+											"src": "/Users/macmini/Desktop/img3.jpg"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{api}}/api/user/photo",
+									"host": [
+										"{{api}}"
+									],
+									"path": [
+										"api",
+										"user",
+										"photo"
+									]
+								},
+								"description": "Rota para adição de password inicial com link encaminhado no e-mail de cadastro"
+							},
+							"response": []
+						},
+						{
+							"name": "Notificacoes",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{api}}/api/user/notifications",
+									"host": [
+										"{{api}}"
+									],
+									"path": [
+										"api",
+										"user",
+										"notifications"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "422ecf0c-786e-4024-9268-03e73942f97c",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "73eaae26-cb14-4000-ba7e-d44b465a3c68",
+				"type": "text/javascript",
+				"exec": [
+					"pm.globals.set(\"api\", \"http://127.0.0.1:8000\");"
+				]
+			}
+		}
+	]
+}

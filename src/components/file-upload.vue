@@ -1,6 +1,6 @@
 <template>
     <label class="button-file-upload" for="datafile">
-      <input type="file" id="datafile" name="datafile"  directory  @change="handleFileChange"/>
+      <input type="file" id="datafile" name="datafile" accept=".json"  directory  @change="handleFileChange"/>
       <span>
         <img src="@/assets/img/upload-icon.svg" alt="icon upload">
         <span>Envar arquivo</span>
@@ -26,19 +26,24 @@ export default {
           // Iniciar componte browser 
           _FileReader.readAsText(file)
           // Leitura do file
-          _FileReader.onloadend = (event) => {
+          _FileReader.onloadend = async (event) => {
               this.ObjectPostman = _FileReader.result
               if(!!_FileReader.result) { 
-                  let toJson = JSON.parse(_FileReader.result)
+                  let toJson = await this.verifyPostmanValid(_FileReader.result)
+                  toJson = JSON.parse(toJson)
                   this.CompleteInput(toJson)
               }   
           }
       },
+      verifyPostmanValid (toJson) { 
+        const postmanArchive = new RegExp('postman') 
+        if(postmanArchive.test(toJson)) { 
+          return toJson
+        }
+        document.getElementById('app').classList.add('error')
+      },
       CompleteInput (jsonFile) {
-        console.log(jsonFile)
-        setTimeout(() => {
-            this.$emit('handlerCollection', jsonFile)
-        }, 300);
+        this.$emit('handlerCollection', jsonFile)
       }
   }
 }

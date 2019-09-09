@@ -1,0 +1,40 @@
+.robotIn { 
+  #robo, #eyes{ 
+    animation: animeFooter 5s ease forwards alternate infinite
+  }
+  #shadow-robo { 
+    opacity: 0.7;
+    animation: animeShadow 5s ease forwards alternate infinite
+  }
+  #window { 
+    display: none;
+  }
+}
+
+//// error robo
+#app.error { 
+.robotIn #eyes { 
+  fill: red
+}
+}
+
+
+
+
+
+@keyframes animeFooter {
+  from { 
+    transform: translateY(0)
+  }
+  to { 
+    transform: translateY(10px)
+  }
+}
+@keyframes animeShadow {
+  from { 
+        transform: translate(112px, 218px) scale(0.24, 0.24);
+  }
+  to { 
+        transform: translate(122px, 228px) scale(0.20, 0.20);
+  }
+}

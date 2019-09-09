@@ -1,0 +1,254 @@
+{
+	"info": {
+		"_postman_id": "60326d82-4261-411c-aadb-ff5ea25c61a1",
+		"name": "Mirtilo",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Listagem posts",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{MirtiloLocal}}/wp-json/wp/v2/posts/",
+					"host": [
+						"{{MirtiloLocal}}"
+					],
+					"path": [
+						"wp-json",
+						"wp",
+						"v2",
+						"posts",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Listagem Categorias",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{MirtiloLocal}}/wp-json/wp/v2/posts/",
+					"host": [
+						"{{MirtiloLocal}}"
+					],
+					"path": [
+						"wp-json",
+						"wp",
+						"v2",
+						"posts",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Listagem Home especiais",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{MirtiloLocal}}/wp-json/especiais/lista",
+					"host": [
+						"{{MirtiloLocal}}"
+					],
+					"path": [
+						"wp-json",
+						"especiais",
+						"lista"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Options - theme",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{MirtiloLocal}}wp-json/acf/v3/options/options",
+					"host": [
+						"{{MirtiloLocal}}wp-json"
+					],
+					"path": [
+						"acf",
+						"v3",
+						"options",
+						"options"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Options - theme Copy",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{MirtiloLocal}}wp-json/acf/v3/options/options",
+					"host": [
+						"{{MirtiloLocal}}wp-json"
+					],
+					"path": [
+						"acf",
+						"v3",
+						"options",
+						"options"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Forms 7",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					},
+					{
+						"key": "",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "credentials",
+						"value": "include",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "email",
+							"value": "ObrigadoDeus@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "nome",
+							"value": "Muito",
+							"type": "text"
+						},
+						{
+							"key": "telefone",
+							"value": "2323232",
+							"type": "text"
+						},
+						{
+							"key": "nome",
+							"value": "Raul",
+							"type": "text"
+						},
+						{
+							"key": "textarea",
+							"value": "Raulzito",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://mirtilo.esy.es/wp-json/contact-form-7/v1/contact-forms/105/feedback",
+					"protocol": "http",
+					"host": [
+						"mirtilo",
+						"esy",
+						"es"
+					],
+					"path": [
+						"wp-json",
+						"contact-form-7",
+						"v1",
+						"contact-forms",
+						"105",
+						"feedback"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Forms 7 Copy Copy",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"your-email\": \"raulmelow@gmail.com\",\n\t\"your-message\": \"13123213\",\n\t\"your-subject\": \"agora vaiiiii\",\n\t\"your-name\": \"Raul Melo\"\n}"
+				},
+				"url": {
+					"raw": "{{MirtiloLocal}}/wp-json/contact-form-7/v1/contact-forms/100/feedback",
+					"host": [
+						"{{MirtiloLocal}}"
+					],
+					"path": [
+						"wp-json",
+						"contact-form-7",
+						"v1",
+						"contact-forms",
+						"100",
+						"feedback"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "e8e1630a-02dd-4f81-9810-80ca930dde8a",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "53e97fb5-c71e-45d2-841c-6f2d6755f3bb",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "7604a8e4-c08a-444a-929f-55603ac7bc68",
+			"key": "MirtiloLocal",
+			"value": "http://localhost:8888/",
+			"type": "string",
+			"disabled": true
+		},
+		{
+			"id": "496b7665-cbd1-467b-91ed-a11e45ddd7eb",
+			"key": "MirtiloLocal",
+			"value": "http://mirtilopatisserie.com",
+			"type": "string"
+		}
+	]
+}

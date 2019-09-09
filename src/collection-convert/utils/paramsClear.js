@@ -11,10 +11,14 @@ const convertTypeOf = params => {
   let _params = null;
   const paramsVerify = new RegExp(":");
   if (paramsVerify.test(params)) {
-    _params = JSON.parse(params);
-    Object.keys(_params).map((index, item) => {
-      _params[index] = typeof _params[index];
-    });
+    try {
+      _params = JSON.parse(params);
+      Object.keys(_params).map((index, item) => {
+        _params[index] = typeof _params[index];
+      });
+    } catch (error) {
+      console.log(error);
+    }
   }
   return _params;
 };

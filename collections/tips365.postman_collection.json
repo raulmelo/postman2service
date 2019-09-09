@@ -1,0 +1,240 @@
+{
+	"info": {
+		"_postman_id": "73fbe0ed-2037-408b-ae57-a53ad43b56c4",
+		"name": "tips365",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "5e7c24f7-c9c5-4b55-ac0e-21be0a08acae",
+						"exec": [
+							"var data = JSON.parse(responseBody);",
+							"postman.setGlobalVariable(\"token\",  'Bearer ' + data.jwt );"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"identifier\": \"61982695412\",\n\t\"password\": \"04269130199\"\n}"
+				},
+				"url": {
+					"raw": "{{api}}/auth/local",
+					"host": [
+						"{{api}}"
+					],
+					"path": [
+						"auth",
+						"local"
+					]
+				},
+				"description": "usuarios cadastrados "
+			},
+			"response": []
+		},
+		{
+			"name": "login Copy",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"identifier\": \"6192695412\",\n\t\"password\": \"04269130199\"\n}"
+				},
+				"url": {
+					"raw": "{{api}}/auth/local",
+					"host": [
+						"{{api}}"
+					],
+					"path": [
+						"auth",
+						"local"
+					]
+				},
+				"description": "usuarios cadastrados "
+			},
+			"response": []
+		},
+		{
+			"name": "Me",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"identifier\": \"6192695412\",\n\t\"password\": \"04269130199\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:1337/users/me",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1337",
+					"path": [
+						"users",
+						"me"
+					]
+				},
+				"description": "usuarios cadastrados "
+			},
+			"response": []
+		},
+		{
+			"name": "Aposta",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"identifier\": \"6192695412\",\n\t\"password\": \"04269130199\"\n}"
+				},
+				"url": {
+					"raw": "{{api}}/listapublicas",
+					"host": [
+						"{{api}}"
+					],
+					"path": [
+						"listapublicas"
+					]
+				},
+				"description": "usuarios cadastrados "
+			},
+			"response": []
+		},
+		{
+			"name": "Lista pública Copy",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"identifier\": \"6192695412\",\n\t\"password\": \"04269130199\"\n}"
+				},
+				"url": {
+					"raw": "{{api}}/listapublicas",
+					"host": [
+						"{{api}}"
+					],
+					"path": [
+						"listapublicas"
+					]
+				},
+				"description": "usuarios cadastrados "
+			},
+			"response": []
+		},
+		{
+			"name": "routas",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": ""
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "00a2e1bb-fd41-4f41-8db9-8cd9e1f9e9c4",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "042a921e-999f-473a-885a-a54a051ab000",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "ccac1d52-40fa-4cd1-b373-f25ab68de9e0",
+			"key": "api",
+			"value": "http://localhost:1337",
+			"type": "string",
+			"disabled": true
+		},
+		{
+			"id": "2670f4d4-57eb-4d58-a5a9-12a25c4e2ba6",
+			"key": "api",
+			"value": "https://d1e46764.ngrok.io",
+			"type": "string"
+		},
+		{
+			"id": "62b4ecf5-32c1-4d27-9557-fef8ca64cfe2",
+			"value": "https://d1e46764.ngrok.io",
+			"type": "string",
+			"disabled": true
+		}
+	]
+}

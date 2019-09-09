@@ -39,7 +39,6 @@ export default {
           newList = await verifyToken(newList)
           newList = await paramsClear(newList)
           newList = await urlPath(newList)
-          console.log(newList)
           this.request = newList
         },
         SetVariables(payload) {

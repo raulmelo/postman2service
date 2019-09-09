@@ -2,38 +2,15 @@
   <div class="grid">
     <header-layout>
       <file-upload @handlerCollection="createCode"></file-upload>
-      <div class="options-code">
-        <button @click="themeCode = !themeCode">Theme</button>
-      </div>
     </header-layout>
     <section class="grid-code">
-      <div :class="`${themeCode ? 'code-night' : ''}`">
-        <code-end v-if="collection" :dataCollection="collection"></code-end>
+      <div :class="`${!themeCode ? 'code-night' : ''}`" v-if="collection">
+         <button @click="themeCode = !themeCode">Theme</button>
+        <code-end  :dataCollection="collection"></code-end>
       </div>
-
-      <!-- <img src="https://drawsql.app/img/drawsql-screenshot-1.png" style="width:100%" alt=""> -->
-      <!-- <img src="https://drawsql.app/img/drawsql-screenshot-1.png" style="width:100%" alt=""> -->
+      <img  src="@/assets/img/postman2service.png" style="width:100%" alt="">
     </section>
-    <section class="grid-step">
-      <div class="grid-step--item">
-        <span></span>
-        <h4>Export </h4>
-        <p>Export collecion postman </p>
-      </div>
-      <div class="grid-step--item">
-        <span></span>
-        <h4>Export </h4>
-        <p>Export collecion postman </p>
-      </div>
-      <div class="grid-step--item">
-        <span></span>
-        <h4>Export </h4>
-        <p>Export collecion postman </p>
-      </div>
-    </section >
-    <section class="grid-code">
-      
-    </section>
+    <section class="grid-code"></section>
   </div>
 </template>
 
@@ -41,12 +18,12 @@
 import HeaderLayout from '../sections/header-layout'
 import FileUpload from '@/components/file-upload'
 import CodeComponents from '@/collection-convert/'
-import fakerCollection from '../../service/FakerCollection'
+
 export default { 
   data () { 
     return { 
       themeCode: false,
-      collection: fakerCollection
+      collection: null
     }
   },
   components: { 
@@ -57,7 +34,6 @@ export default {
   methods: { 
     createCode (event) { 
       this.collection = event
-      
     }
   }
 }

@@ -1,0 +1,2982 @@
+{
+	"info": {
+		"_postman_id": "250a59d6-dd4c-4027-a8da-a069757aa963",
+		"name": "BemMaisAgro.API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Autorização",
+			"item": [
+				{
+					"name": "Token",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "8d625687-7172-4af7-b7e6-3cf9486e0f85",
+								"exec": [
+									"var jsonData = JSON.parse(responseBody); ",
+									"postman.setGlobalVariable(\"token\", jsonData.data);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"usuario\": \"BemMaisAgroAPP\",\n\t\"senha\" : \"RSbc!A*P)~K48#U:\"\n}"
+						},
+						"url": {
+							"raw": "{{host}}/api/autorizacao/token",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"autorizacao",
+								"token"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Quero Participar",
+			"item": [
+				{
+					"name": "Elegibilidade",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{host}}/api/QueroParticipar/Elegivel/04678362991",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"QueroParticipar",
+								"Elegivel",
+								"04678362991"
+							]
+						},
+						"description": "Ao executar a elegibilidade com usuário que existe na base coorporativa e não estejá na base Bem+Agro."
+					},
+					"response": []
+				},
+				{
+					"name": "Ativa Elegiblidade ",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"IdProdutorRural\":13\n}"
+						},
+						"url": {
+							"raw": "{{host}}/api/QueroParticipar/AtivaElegibilidade",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"QueroParticipar",
+								"AtivaElegibilidade"
+							]
+						},
+						"description": "Ativa Chave Elegivel do Produtor Rural"
+					},
+					"response": []
+				},
+				{
+					"name": "Cadastrar Senha",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"Id\":13,\n\t\"Senha\":\"ab123456\",\n\t\"ConfirmacaoSenha\":\"ab123456\"\n}"
+						},
+						"url": {
+							"raw": "{{host}}/api/QueroParticipar/SalvaSenha",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"QueroParticipar",
+								"SalvaSenha"
+							]
+						},
+						"description": "Erros:\nCadastrarSenha\nbody:\n{\"Id\":9999999,\n\"Senha\":\"ab123456\", \"ConfirmacaoSenha\":\"ab12345\"\n}\nbody:\n{\n\"Senha\":\"ab123456\",\n\"ConfirmacaoSenha\":\"ab123456\"\n}"
+					},
+					"response": []
+				},
+				{
+					"name": "Buscar Regulamento",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{host}}/api/Regulamento",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"Regulamento"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AceitaRegulamento",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"IdProdutorRural\":13\n}"
+						},
+						"url": {
+							"raw": "{{host}}/api/Regulamento/Aceite/",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"Regulamento",
+								"Aceite",
+								""
+							]
+						},
+						"description": "Usuário não pode logar sem ter ceitado o regulamento, ou Visualizar na HOME."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Autenticação",
+			"item": [
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "66c75df5-f3d4-43a0-a4c9-2f54c8fdfc20",
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);",
+									"postman.setGlobalVariable(\"token_produtor\", jsonData.data);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"CPF\": \"04678362991\",\n\t\"Senha\": \"ab123456\"\n}"
+						},
+						"url": {
+							"raw": "{{host}}/api/login",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"login"
+							]
+						},
+						"description": "Erro ao logar, Msg 400 Bad Request."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Complete Seu Cadastro",
+			"item": [
+				{
+					"name": "Recupera Produtor Rural",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authentication-Token",
+								"value": "{{token_produtor}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{host}}/api/produtorrural",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"produtorrural"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cadastra o Restante do ProdutorRural",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "19b853d8-0998-4e41-8a8c-f9aaaa31f331",
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);",
+									"postman.setGlobalVariable(\"token_produtor\", jsonData.data);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authentication-Token",
+								"value": "{{token_produtor}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"TelefoneResidencial\": \"(11) 2957-7541\",\n\t\"TelefoneCelular\": \"(11) 98261-1541\",\n\t\"Email\": \"rafael.santos@ltm.digital\",\n\t\"IdSegmentosProduzidos\":[1,2,3,7,8,9,10,11],\n\t\"IdSegmentosinteressados\":[4,5,6],\n\t\"IdFaixaRendaSenar\":1,\n\t\"UfPrincipal\":35,\n\t\"IdMunicipioPrincipal\":534,\n\t\"UfInteresse\":[\"DF\",\"GO\",\"SP\",\"RJ\",\"MG\"],\n\t\"MunicipioInteresse\":[804,977],\n\t\"Endereco\":{\n\t\"Cep\":\"01415906\",\n\t\"Logradouro\":\"R. Bela Cintra\",\n\t\"Bairro\": \"Consolação\",\n\t\"Numero\":986,\n\t\"Municipio\": \"São Paulo\",\n\t\"Uf\": 1,\n\t\"CodigoMunicipio\":534\n\t}\n}"
+						},
+						"url": {
+							"raw": "{{host}}/api/ProdutorRural/CompletaCadastro",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"ProdutorRural",
+								"CompletaCadastro"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Esqueci Minha Senha",
+			"item": [
+				{
+					"name": "Recuperar Email Mascarado",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{host}}/api/esqueciminhasenha/recuperar-email/04678362991",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"esqueciminhasenha",
+								"recuperar-email",
+								"04678362991"
+							]
+						},
+						"description": "- Permitir somente reset de senha após recuperacao de senha;\n- Endpoint recuperacao de senha (03812113988)"
+					},
+					"response": []
+				},
+				{
+					"name": "Enviar Senha Temporária",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"cpf\": \"04678362991\",\n\t\"email\": \"rafael.santos@ltm.digital\"\n}"
+						},
+						"url": {
+							"raw": "{{host}}/api/esqueciminhasenha/enviar-senha-temporaria",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"esqueciminhasenha",
+								"enviar-senha-temporaria"
+							]
+						},
+						"description": "Gerar Token único para cada envio de senha."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Evento",
+			"item": [
+				{
+					"name": "Detalhes do Evento",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authentication-Token",
+								"value": "{{token_produtor}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{host}}/api/evento/1",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"evento",
+								"1"
+							]
+						},
+						"description": "- Retorno de Detalhe do evento 404 quando nao encontrado;\n- Verificar se evento, banner ou qualquer entidade que exige moderação está moderado antes de trazer detalhes;\n- Verificar flag (ativo) para evento, banners etc."
+					},
+					"response": []
+				},
+				{
+					"name": "Listar Próximos Eventos",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authentication-Token",
+								"value": "{{token_produtor}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/api/evento/proximos-eventos",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"evento",
+								"proximos-eventos"
+							]
+						},
+						"description": "Listagem dos 3 próximos eventos da página logada;\nVerificar segmentação por grupo e região;"
+					},
+					"response": []
+				},
+				{
+					"name": "Eventos Ganha Agros",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Authentication-Token",
+								"value": "{{token_produtor}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/api/evento/evento-ganha-agros?p=0&t=10",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"evento",
+								"evento-ganha-agros"
+							],
+							"query": [
+								{
+									"key": "p",
+									"value": "0"
+								},
+								{
+									"key": "t",
+									"value": "10"
+								}
+							]
+						},
+						"description": "Verificar por qual motivo não está retornando informações."
+					},
+					"response": []
+				},
+				{
+					"name": "Listagem Eventos",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authentication-Token",
+								"type": "text",
+								"value": "{{token_produtor}}"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/api/evento/listagem-eventos?tipoEvento=gratuito&uf=SP&municipio=Sao Paulo&nomeEvento=Evento 1&p=0&t=4",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"evento",
+								"listagem-eventos"
+							],
+							"query": [
+								{
+									"key": "tipoEvento",
+									"value": "gratuito"
+								},
+								{
+									"key": "uf",
+									"value": "SP"
+								},
+								{
+									"key": "municipio",
+									"value": "Sao Paulo"
+								},
+								{
+									"key": "nomeEvento",
+									"value": "Evento 1"
+								},
+								{
+									"key": "p",
+									"value": "0"
+								},
+								{
+									"key": "t",
+									"value": "4"
+								}
+							]
+						},
+						"description": "Erro 400."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Produto",
+			"item": [
+				{
+					"name": "Filtros de Tela",
+					"item": [
+						{
+							"name": "Categorias do Parceiro",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authentication-Token",
+										"value": "{{token_produtor}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{host}}/api/parceiroproduto/filtros/categorias-do-parceiro",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"parceiroproduto",
+										"filtros",
+										"categorias-do-parceiro"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Tipos de Produtos",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authentication-Token",
+										"type": "text",
+										"value": "{{token_produtor}}"
+									}
+								],
+								"url": {
+									"raw": "{{host}}/api/parceiroproduto/filtros/tipos",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"parceiroproduto",
+										"filtros",
+										"tipos"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Ordenação",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authentication-Token",
+										"type": "text",
+										"value": "{{token_produtor}}"
+									}
+								],
+								"url": {
+									"raw": "{{host}}/api/parceiroproduto/filtros/ordenacao",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"parceiroproduto",
+										"filtros",
+										"ordenacao"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Faixas de Preço",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authentication-Token",
+										"type": "text",
+										"value": "{{token_produtor}}"
+									}
+								],
+								"url": {
+									"raw": "{{host}}/api/parceiroproduto/filtros/faixas-de-preco",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"parceiroproduto",
+										"filtros",
+										"faixas-de-preco"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Detalhes do Produto",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authentication-Token",
+								"value": "{{token_produtor}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{host}}/api/parceiroproduto/26",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"parceiroproduto",
+								"26"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Vitrine Nacional",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authentication-Token",
+								"value": "{{token_produtor}}",
+								"type": "text"
+							},
+							{
+								"key": "",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/api/parceiroproduto/vitrine-nacional?p=0&t=10",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"parceiroproduto",
+								"vitrine-nacional"
+							],
+							"query": [
+								{
+									"key": "p",
+									"value": "0"
+								},
+								{
+									"key": "t",
+									"value": "10"
+								}
+							]
+						},
+						"description": "Retorna uma lista de uf e municípios."
+					},
+					"response": []
+				},
+				{
+					"name": "Vitrine Regional",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authentication-Token",
+								"value": "{{token_produtor}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/api/parceiroproduto/vitrine-regional?p=0&t=10",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"parceiroproduto",
+								"vitrine-regional"
+							],
+							"query": [
+								{
+									"key": "p",
+									"value": "0"
+								},
+								{
+									"key": "t",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Vitrine Regional com filtro de Municipio",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authentication-Token",
+								"type": "text",
+								"value": "{{token_produtor}}"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/api/parceiroproduto/vitrine-regional?p=0&t=10&uf=DF&m=800",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"parceiroproduto",
+								"vitrine-regional"
+							],
+							"query": [
+								{
+									"key": "p",
+									"value": "0"
+								},
+								{
+									"key": "t",
+									"value": "10"
+								},
+								{
+									"key": "uf",
+									"value": "DF"
+								},
+								{
+									"key": "m",
+									"value": "800"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Vitrine Segmentada",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "",
+								"value": "",
+								"type": "text"
+							},
+							{
+								"key": "Authentication-Token",
+								"value": "{{token_produtor}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/api/parceiroproduto/vitrine-segmentada?p=0&t=10",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"parceiroproduto",
+								"vitrine-segmentada"
+							],
+							"query": [
+								{
+									"key": "p",
+									"value": "0"
+								},
+								{
+									"key": "t",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Catalogo",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "",
+								"type": "text",
+								"value": "",
+								"disabled": true
+							},
+							{
+								"key": "Authentication-Token",
+								"type": "text",
+								"value": "{{token_produtor}}"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/api/parceiroproduto/catalogo?Pagina=0&TamanhoDaPagina=12&OrdenarPor=MaiorDesconto&Tipo=ateg&CategoriaDoParceiro=ServicosFinanceiros&PercentualDeDesconto=Ate10&ParteDoNome=vali&SegmentoAgropecuario=1",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"parceiroproduto",
+								"catalogo"
+							],
+							"query": [
+								{
+									"key": "Pagina",
+									"value": "0"
+								},
+								{
+									"key": "TamanhoDaPagina",
+									"value": "12"
+								},
+								{
+									"key": "OrdenarPor",
+									"value": "MaiorDesconto",
+									"description": "Nome, PrecoEmAgroCrescente, PrecoEmAgroDecrescente, MaiorDesconto"
+								},
+								{
+									"key": "Tipo",
+									"value": "CnaJoven",
+									"description": "Link, Voucher, Fisico, CnaJoven, ConsultoriaTecnica, Ateg, Curso",
+									"disabled": true
+								},
+								{
+									"key": "Tipo",
+									"value": "ateg"
+								},
+								{
+									"key": "CategoriaDoParceiro",
+									"value": "Conhecimento",
+									"description": "Conhecimento, Insumos, MaquinasEquipamentos, ServicosFinanceiros, Viagens, Saude, Seguros",
+									"disabled": true
+								},
+								{
+									"key": "CategoriaDoParceiro",
+									"value": "ServicosFinanceiros"
+								},
+								{
+									"key": "FaixaDePreco",
+									"value": "Ate100",
+									"disabled": true
+								},
+								{
+									"key": "PercentualDeDesconto",
+									"value": "De11A30",
+									"disabled": true
+								},
+								{
+									"key": "PercentualDeDesconto",
+									"value": "Ate10"
+								},
+								{
+									"key": "FaixaInicialDePrecoEmAgros",
+									"value": "800",
+									"disabled": true
+								},
+								{
+									"key": "FaixaFinalDePrecoEmAgros",
+									"value": "150",
+									"disabled": true
+								},
+								{
+									"key": "ParteDoNome",
+									"value": "vali"
+								},
+								{
+									"key": "Parceiro",
+									"value": "2",
+									"disabled": true
+								},
+								{
+									"key": "Uf",
+									"value": "MG",
+									"disabled": true
+								},
+								{
+									"key": "Uf",
+									"value": "DF",
+									"disabled": true
+								},
+								{
+									"key": "Municipio",
+									"value": "1346",
+									"disabled": true
+								},
+								{
+									"key": "SegmentoAgropecuario",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cursos Ganha Agros",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authentication-Token",
+								"value": "{{token_produtor}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/api/parceiroproduto/curso-ganha-agros?p=0&t=5",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"parceiroproduto",
+								"curso-ganha-agros"
+							],
+							"query": [
+								{
+									"key": "p",
+									"value": "0"
+								},
+								{
+									"key": "t",
+									"value": "5"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Fale Conosco",
+			"item": [
+				{
+					"name": "Abrir Chamado",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"Nome\":\"Willian\",\n\t\"Email\":\"willian.novaes@fcamara.com\",\n\t\"Mensagem\": \"test\",\n\t\"Telefone\": \"5464688484\"\n}\n"
+						},
+						"url": {
+							"raw": "{{host}}/api/FaleConosco",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"FaleConosco"
+							]
+						},
+						"description": "EndPoint do Fale Conosco"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Faq",
+			"item": [
+				{
+					"name": "Buscar Faq",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/faq",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"faq"
+							]
+						},
+						"description": "- Remover id de endpoints de consulta (faq);\n- Remover DataAtualizacao, DataCriacao, Ativo, Ordem do JSON de retorno do Faq;\n- Mudar padrao de paramentro para URL nas chamadas GET."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Banner",
+			"item": [
+				{
+					"name": "Listar",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authentication-Token",
+								"value": "{{token_produtor}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{host}}/api/banner/",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"banner",
+								""
+							]
+						},
+						"description": "Busca de banners de vigencia baseando-se somente na data atual."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Regiao",
+			"item": [
+				{
+					"name": "UFs",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/regiao/uf",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"regiao",
+								"uf"
+							]
+						},
+						"description": "Retorna as UF's;\nOrdenar por nomes."
+					},
+					"response": []
+				},
+				{
+					"name": "Municipios",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/regiao/df/a",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"regiao",
+								"df",
+								"a"
+							]
+						},
+						"description": "Retorna os municipios de determinada UF;\nInlcuir filtro para nome do município, ignorando letras e acentos."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Conteudo",
+			"item": [
+				{
+					"name": "Conteúdos Úteis - Notícias",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authentication-Token",
+								"value": "{{token_produtor}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/api/conteudo?p=0&t=10",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"conteudo"
+							],
+							"query": [
+								{
+									"key": "p",
+									"value": "0"
+								},
+								{
+									"key": "t",
+									"value": "10"
+								},
+								{
+									"key": "tipoConteudo",
+									"value": "Campanha",
+									"disabled": true
+								},
+								{
+									"key": "nome",
+									"value": "Tí",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Conteúdos Úteis - Interna Conteudo",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authentication-Token",
+								"type": "text",
+								"value": "{{token_produtor}}"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/api/conteudo/5",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"conteudo",
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Conteúdos Úteis - Outros",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authentication-Token",
+								"type": "text",
+								"value": "{{token_produtor}}"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/api/conteudo/outros?p=0&t=8",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"conteudo",
+								"outros"
+							],
+							"query": [
+								{
+									"key": "p",
+									"value": "0"
+								},
+								{
+									"key": "t",
+									"value": "8"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Conteúdos Úteis - Mais Lidas",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authentication-Token",
+								"type": "text",
+								"value": "{{token_produtor}}"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/api/conteudo/MaisLidos?p=0&t=10",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"conteudo",
+								"MaisLidos"
+							],
+							"query": [
+								{
+									"key": "p",
+									"value": "0"
+								},
+								{
+									"key": "t",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Conteúdo - Ganhar Agros",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authentication-Token",
+								"type": "text",
+								"value": "{{token_produtor}}"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/api/BonificarConteudo/17",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"BonificarConteudo",
+								"17"
+							]
+						},
+						"description": "Endpoint utilizado para ganhar Agros após a leitura do conteúdo."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Resgate",
+			"item": [
+				{
+					"name": "Produto",
+					"item": [
+						{
+							"name": "Resgatar Produto ATEG",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authentication-Token",
+										"type": "text",
+										"value": "{{token_produtor}}"
+									},
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"IdParceiroProduto\": 58,\n\t\"Quantidade\": 5,\n\t\"Complemento\":{\n\t\t\"Nome\":\"Allan Nunes Rodrigues\",\n\t\t\"Cpf\": \"02622684185\",\n\t\t\"DataNascimento\":\"13/11/1989\",\n\t\t\"Formacao\":\"\",\n\t\t\"AssuntoConsultoria\":\"\",\n\t\t\"FocoConsultoria\":\"\",\n\t\t\"Pergunta\":\"\",\n\t\t\"VinculoSetorRural\":\"\",\n\t\t\"Email\":\"\",\n\t\t\"TelefoneCelular\":\"\",\n\t\t\"Cep\":\"70340000\",\n\t\t\"Logradouro\":\"Rua 23\",\n\t\t\"Bairro\":\"\",\n\t\t\"Numero\":\"\",\n\t\t\"Municipio\":\"Brasilia\",\n\t\t\"Uf\": 53,\n\t\t\"Complemento\":\"\",\n\t\t\"CodigoMunicipio\":\"9701\",\n\t\t\"Rg\":\"\",\n\t\t\"OrgaoEmissor\":\"\",\n\t\t\"Genero\": 1,\n\t\t\"UfNaturalidade\": \"DF\",\n\t\t\"IdMunicipioNaturalidade\": \"804\",\n\t\t\"TipoEndereco\": 1,\n\t\t\"EstadoCivil\": 1,\n\t\t\"NomeMae\":\"\",\n\t\t\"NomePai\":\"\",\n\t\t\"PontoReferencia\":\"\",\n\t\t\"ComoChegar\":\"\",\n\t\t\"Latitude\":\"\",\n\t\t\"Longitude\":\"\",\n\t\t\"SegmentoAgropecuarios\":[1]\n\t}\n}"
+								},
+								"url": {
+									"raw": "{{host}}/api/ResgateProduto",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"ResgateProduto"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Resgatar Produto CNA JOVEM",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authentication-Token",
+										"type": "text",
+										"value": "{{token_produtor}}"
+									},
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"IdParceiroProduto\": 56,\n\t\"Quantidade\": 1,\n\t\"Complemento\":{\n\t\t\"Nome\":\"Allan Nunes Rodrigues\",\n\t\t\"Cpf\":\"02622684185\",\n\t\t\"DataNascimento\":\"11/11/1989\",\n\t\t\"Formacao\": 1,\n\t\t\"AssuntoConsultoria\": 1,\n\t\t\"FocoConsultoria\": 1,\n\t\t\"Pergunta\":\"\",\n\t\t\"VinculoSetorRural\":\"Teste Vinculo!\",\n\t\t\"Email\":\"allan.rodrigues@grupoltm.com.br\",\n\t\t\"TelefoneCelular\":\"61992672979\",\n\t\t\"Cep\":\"70340000\",\n\t\t\"Logradouro\":\"SRTVS\",\n\t\t\"Bairro\":\"Asa SUL\",\n\t\t\"Numero\":\"567\",\n\t\t\"Municipio\":\"Brasilia\",\n\t\t\"Uf\":\"53\",\n\t\t\"Complemento\":\"ED Multi\",\n\t\t\"CodigoMunicipio\":\"9701\"\n\t}\n}"
+								},
+								"url": {
+									"raw": "{{host}}/api/ResgateProduto",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"ResgateProduto"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Resgatar Produto CONSULTORIA TECNICA",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authentication-Token",
+										"type": "text",
+										"value": "{{token_produtor}}"
+									},
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"IdParceiroProduto\": 29,\n\t\"Quantidade\": 1,\n\t\"Complemento\":{\n\t\t\"AssuntoConsultoria\": 1,\n\t\t\"FocoConsultoria\": 1,\n\t\t\"Pergunta\":\"Teste Pergunta!\"\n\t}\n}"
+								},
+								"url": {
+									"raw": "{{host}}/api/ResgateProduto",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"ResgateProduto"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Resgatar Produto CURSO",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authentication-Token",
+										"type": "text",
+										"value": "{{token_produtor}}"
+									},
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"IdParceiroProduto\": 26,\n\t\"Quantidade\": 1,\n\t\"Complemento\":{\n\t\t\"Nome\":\"\",\n\t\t\"Cpf\":\"\",\n\t\t\"DataNascimento\":\"\",\n\t\t\"Formacao\":\"\",\n\t\t\"AssuntoConsultoria\":\"\",\n\t\t\"FocoConsultoria\":\"\",\n\t\t\"Pergunta\":\"\",\n\t\t\"VinculoSetorRural\":\"\",\n\t\t\"Email\":\"\",\n\t\t\"TelefoneCelular\":\"\",\n\t\t\"Cep\":\"\",\n\t\t\"Logradouro\":\"\",\n\t\t\"Bairro\":\"\",\n\t\t\"Numero\":\"\",\n\t\t\"Municipio\":\"\",\n\t\t\"Uf\":\"\",\n\t\t\"Complemento\":\"\",\n\t\t\"CodigoMunicipio\":\"\"\n\t}\n}"
+								},
+								"url": {
+									"raw": "{{host}}/api/ResgateProduto",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"ResgateProduto"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Resgatar Produto FISICO",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authentication-Token",
+										"type": "text",
+										"value": "{{token_produtor}}"
+									},
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"IdParceiroProduto\": 31,\n\t\"Quantidade\": 1\n}"
+								},
+								"url": {
+									"raw": "{{host}}/api/ResgateProduto",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"ResgateProduto"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Resgatar Produto LINK",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authentication-Token",
+										"type": "text",
+										"value": "{{token_produtor}}"
+									},
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"IdParceiroProduto\": 32,\n\t\"Quantidade\": 1,\n}"
+								},
+								"url": {
+									"raw": "{{host}}/api/ResgateProduto",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"ResgateProduto"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Resgatar Produto VOUCHER",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authentication-Token",
+										"type": "text",
+										"value": "{{token_produtor}}"
+									},
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"IdParceiroProduto\": 33,\n\t\"Quantidade\": 1,\n\t\"Complemento\":{\n\t\t\"Nome\":\"\",\n\t\t\"Cpf\":\"\",\n\t\t\"DataNascimento\":\"\",\n\t\t\"Formacao\":\"\",\n\t\t\"AssuntoConsultoria\":\"\",\n\t\t\"FocoConsultoria\":\"\",\n\t\t\"Pergunta\":\"\",\n\t\t\"VinculoSetorRural\":\"\",\n\t\t\"Email\":\"\",\n\t\t\"TelefoneCelular\":\"\",\n\t\t\"Cep\":\"\",\n\t\t\"Logradouro\":\"\",\n\t\t\"Bairro\":\"\",\n\t\t\"Numero\":\"\",\n\t\t\"Municipio\":\"\",\n\t\t\"Uf\":\"\",\n\t\t\"Complemento\":\"\",\n\t\t\"CodigoMunicipio\":\"\"\n\t}\n}"
+								},
+								"url": {
+									"raw": "{{host}}/api/ResgateProduto",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"ResgateProduto"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Evento",
+					"item": [
+						{
+							"name": "Resgatar Eveto Gratuito",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authentication-Token",
+										"type": "text",
+										"value": "{{token_produtor}}"
+									},
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"IdEvento\": 3,\n\t\"Quantidade\": 1,\n\t\"Complemento\":[{\n\t\t\"Nome\":\"Allan Nunes Rodrigues\",\n\t\t\"Cpf\": \"14700443073\",\n\t}]\n}"
+								},
+								"url": {
+									"raw": "{{host}}/api/ResgateEvento",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"ResgateEvento"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Resgatar Eveto PAGO",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authentication-Token",
+										"type": "text",
+										"value": "{{token_produtor}}"
+									},
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"IdEvento\": 3,\n\t\"Quantidade\": 1,\n\t\"Complemento\":[{\n\t\t\"Nome\":\"Allan Nunes Rodrigues\",\n\t\t\"Cpf\": \"14700443073\",\n\t}]\n}"
+								},
+								"url": {
+									"raw": "{{host}}/api/ResgateEvento",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"ResgateEvento"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Consultar CPF",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authentication-Token",
+										"type": "text",
+										"value": "{{token_produtor}}"
+									},
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{host}}/api/ResgateEvento/29/02622684198",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"ResgateEvento",
+										"29",
+										"02622684198"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Resgate - Recuperar",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authentication-Token",
+								"type": "text",
+								"value": "{{token_produtor}}"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/api/resgateProduto/50",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"resgateProduto",
+								"50"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Resgate - Listar",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authentication-Token",
+								"type": "text",
+								"value": "{{token_produtor}}"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/api/resgateProduto/50",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"resgateProduto",
+								"50"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Parceiro",
+			"item": [
+				{
+					"name": "Autenticação",
+					"item": [
+						{
+							"name": "Login",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "66c75df5-f3d4-43a0-a4c9-2f54c8fdfc20",
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);",
+											"postman.setGlobalVariable(\"token_parceiro\", jsonData.data);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"Cnpj\": \"32672472000187\",\n\t\"Senha\": \"abc123456\"\n}"
+								},
+								"url": {
+									"raw": "{{host}}/api/parceiro/login",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"parceiro",
+										"login"
+									]
+								},
+								"description": "Erro ao logar, Msg 400 Bad Request."
+							},
+							"response": []
+						},
+						{
+							"name": "Validar Primeiro Acesso",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "66c75df5-f3d4-43a0-a4c9-2f54c8fdfc20",
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);",
+											"postman.setGlobalVariable(\"token_produtor\", jsonData.data);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"Cnpj\": \"27335741000180\",\n\t\"DataFechamentoParceria\": \"01/01/0001\"\n}"
+								},
+								"url": {
+									"raw": "{{host}}/api/parceiro/validar-primeiro-acesso",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"parceiro",
+										"validar-primeiro-acesso"
+									]
+								},
+								"description": "Erro ao logar, Msg 400 Bad Request."
+							},
+							"response": []
+						},
+						{
+							"name": "Cadastrar Senha",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "66c75df5-f3d4-43a0-a4c9-2f54c8fdfc20",
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);",
+											"postman.setGlobalVariable(\"token_produtor\", jsonData.data);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"Cnpj\": \"27335741000180\",\n\t\"Senha\": \"teste\",\n\t\"ConfirmacaoDeSenha\": \"teste\"\n}"
+								},
+								"url": {
+									"raw": "{{host}}/api/parceiro/cadastrar-senha",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"parceiro",
+										"cadastrar-senha"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Esqueci Minha Senha",
+					"item": [
+						{
+							"name": "Recuperar Email Mascarado",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{host}}/api/parceiro/recuperar-email/27335741000180",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"parceiro",
+										"recuperar-email",
+										"27335741000180"
+									]
+								},
+								"description": "- Permitir somente reset de senha após recuperacao de senha;\n- Endpoint recuperacao de senha (03812113988)"
+							},
+							"response": []
+						},
+						{
+							"name": "Enviar Senha Temporária",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"cnpj\": \"27335741000180\",\n\t\"email\": \"lucilvio.lima@grupoltm.com.br\"\n}"
+								},
+								"url": {
+									"raw": "{{host}}/api/parceiro/enviar-senha-temporaria",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"parceiro",
+										"enviar-senha-temporaria"
+									]
+								},
+								"description": "Gerar Token único para cada envio de senha."
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Oferta",
+					"item": [
+						{
+							"name": "Registrar Utilização",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "Authentication-Token",
+										"value": "{{token_parceiro}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"CodigoDeResgate\": \"3785ECDB-AD11-4313-862D-BA43E42A4B8F\"\n}"
+								},
+								"url": {
+									"raw": "{{host}}/api/parceiro/oferta/registrar-utilizacao",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"parceiro",
+										"oferta",
+										"registrar-utilizacao"
+									]
+								},
+								"description": "Gerar Token único para cada envio de senha."
+							},
+							"response": []
+						},
+						{
+							"name": "Detalhes da Oferta a Ser Resgatada",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "Authentication-Token",
+										"value": "{{token_parceiro}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{host}}/api/parceiro/oferta/detalhes-utilizacao?CodigoDeResgate=FC8B84F2-8D90-4F75-A910-90F736262439",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"parceiro",
+										"oferta",
+										"detalhes-utilizacao"
+									],
+									"query": [
+										{
+											"key": "CodigoDeResgate",
+											"value": "FC8B84F2-8D90-4F75-A910-90F736262439"
+										}
+									]
+								},
+								"description": "- Permitir somente reset de senha após recuperacao de senha;\n- Endpoint recuperacao de senha (03812113988)"
+							},
+							"response": []
+						},
+						{
+							"name": "Listagem de Ofertas",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "Authentication-Token",
+										"type": "text",
+										"value": "{{token_parceiro}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{host}}/api/parceiro/oferta/listagem?OrdenarPor=PrecoEmAgroCrescente&Pagina=0&TamanhoDaPagina=10",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"parceiro",
+										"oferta",
+										"listagem"
+									],
+									"query": [
+										{
+											"key": "OrdenarPor",
+											"value": "PrecoEmAgroCrescente"
+										},
+										{
+											"key": "Pagina",
+											"value": "0"
+										},
+										{
+											"key": "TamanhoDaPagina",
+											"value": "10"
+										},
+										{
+											"key": "SegmentoAgropecuario",
+											"value": null,
+											"disabled": true
+										},
+										{
+											"key": "Uf",
+											"value": "Df",
+											"disabled": true
+										},
+										{
+											"key": "Municipio",
+											"value": "",
+											"disabled": true
+										},
+										{
+											"key": "ParteDoNome",
+											"value": "reg",
+											"disabled": true
+										},
+										{
+											"key": "Ativo",
+											"value": "false",
+											"disabled": true
+										},
+										{
+											"key": "Tipo",
+											"value": "ateg",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Detalhes",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "Authentication-Token",
+										"type": "text",
+										"value": "{{token_parceiro}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{host}}/api/parceiro/oferta/detalhes?IdDoProduto=50",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"parceiro",
+										"oferta",
+										"detalhes"
+									],
+									"query": [
+										{
+											"key": "IdDoProduto",
+											"value": "50"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				}
+			]
+		},
+		{
+			"name": "Produtor Rural",
+			"item": [
+				{
+					"name": "Recuperar Segmentos Agropecuarios",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authentication-Token",
+								"type": "text",
+								"value": "{{token_produtor}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{host}}/api/produtorrural/SegmentoAgropecuario",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"produtorrural",
+								"SegmentoAgropecuario"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Salvar Segmentos Agropecuario",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authentication-Token",
+								"value": "{{token_produtor}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "[\n\t\"BovinoculturaCarne\",\n\t\"Suinocultura\"\n]"
+						},
+						"url": {
+							"raw": "{{host}}/api/produtorrural/SegmentoAgropecuario",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"produtorrural",
+								"SegmentoAgropecuario"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Recuperar Produtor Rural",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authentication-Token",
+								"type": "text",
+								"value": "{{token_produtor}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{host}}/api/produtorrural/EditarProdutorRural",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"produtorrural",
+								"EditarProdutorRural"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Editar Produtor Rural",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authentication-Token",
+								"type": "text",
+								"value": "{{token_produtor}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\t\t\"cpf\": \"83693262853\",\n        \"nome\": \"IZAIAS ALVES\",\n        \"telefoneResidencial\": \"(11) 2957-7541\",\n        \"telefoneCelular\": \"(11) 98261-1541\",\n        \"email\": \"brayann.ouluiz@grupoltm.com.br\",\n        \"idFaixaRendaSenar\": 1,\n        \"ufPrincipal\": \"SP\",\n        \"idMunicipioPrincipal\": 534,\n        \"ufInteresse\": [\n            1,\n            2\n        ],\n        \"municipioInteresse\": [\n            1,\n            1,\n            1,\n            1,\n            1,\n            1\n        ],\n        \"endereco\": {\n            \"cep\": \"01415906\",\n            \"logradouro\": \"R. Bela Cintra\",\n            \"bairro\": \"Consolação\",\n            \"numero\": \"986\",\n            \"municipio\": \"São Paulo\",\n            \"uf\": 1,\n            \"codigoMunicipio\": \"534\"\n        }\n    }"
+						},
+						"url": {
+							"raw": "{{host}}/api/produtorrural/EditarProdutorRural",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"produtorrural",
+								"EditarProdutorRural"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "619da320-bdb9-45ab-887c-8d76ef8a58c0",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "e1d70c71-0774-46c5-9cb2-8c7f6192322d",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
